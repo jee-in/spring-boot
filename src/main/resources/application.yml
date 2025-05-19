@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: demo
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  level:
+    root: TRACE
+    # Remove Report logs
+    org.springframework.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer: WARN
+    org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger: WARN
+
+  pattern:
+    console: "%clr(%r){faint} [%clr(%thread){magenta}] %clr(%-5level){green} %clr(%logger){cyan} - %msg%n"
+    file: "%r [%thread] %-5level %logger - %msg%n"
+
+  file:
+    name: logs/default-setting.log
