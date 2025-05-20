@@ -1,0 +1,18 @@
+services:
+  logstash01:
+    image: docker.elastic.co/logstash/logstash:${STACK_VERSION}
+    labels:
+      co.elastic.logs/module: logstash
+    user: root
+    ports:
+      - "5200:5200"
+      - ${LS_PORT}:9600
+    volumes:
+      - logstashdata01:/usr/share/logstash/data
+      - "./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro"
+    environment:
+      - xpack.monitoring.enabled=false
+      - LS_PORT=${LS_PORT}
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - ELASTIC_HOSTS=http://es01:9200
