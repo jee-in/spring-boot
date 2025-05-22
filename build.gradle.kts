@@ -2,6 +2,7 @@ plugins {
 	java
 	id("org.springframework.boot") version "3.4.5"
 	id("io.spring.dependency-management") version "1.1.7"
+    id("org.asciidoctor.jvm.convert") version "4.0.4"
 }
 
 group = "com.example"
@@ -20,10 +21,27 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
     implementation("net.logstash.logback:logstash-logback-encoder:8.0")
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testCompileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.register<Copy>("copyTestReport") {
+    dependsOn(tasks.named("test"))
+    from(layout.buildDirectory.dir("reports/tests/test"))
+    into("docs/test-report")
+}
+
+tasks.register<Copy>("copyAsciiDoc") {
+    dependsOn(tasks.named("asciidoctor"))
+    from(layout.buildDirectory.dir("asciidoc/html5"))
+    into("docs")
 }
