@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - ToStringTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>ToStringTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.demo.lombok.html">com.example.demo.lombok</a> &gt; ToStringTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">16</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.023s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">@ToString을 이용하면 toString() 메서드가 오버라이드된다.</td>
+<td class="success">testToString()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: doNotUseGetters를 true로 설정하면 getter는 호출되지 않는다.</td>
+<td class="success">testToStringDoNotUseGetters()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: 필드 또는 getter에 @ToString.Exclude 를 쓰면 해당 필드를 문자열화에서 제외할 수 있다.</td>
+<td class="success">testToStringExclude()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: 필드 또는 getter에 @ToString.Exclude와 @ToString.Include를 동시에 쓰면 에러가 발생한다.</td>
+<td class="success">testToStringExcludeAndInclude()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: @ToString.Include를 명시적으로 하지 않아도 모든 필드는 문자열화된다.</td>
+<td class="success">testToStringExplicitlyInclude()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: getter에 @ToString.Include를 설정하고 doNotUseGetters를 true로 설정하면 @ToString.include가 우선된다.</td>
+<td class="success">testToStringGetterIncludeAndDonotUseGetters()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: @ToString.Include를 쓸 때 필드 이름을 지정할 수 있다.</td>
+<td class="success">testToStringIncludeCustom()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: @ToString.Include를 쓸 때 출력 순서를 지정할 수 있다.</td>
+<td class="success">testToStringIncludeCustomRank()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: ToString.Include를 getter에 설정할 수도 있다.</td>
+<td class="success">testToStringIncludeOptionToGetter()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: ToString.Include를 필드와 getter 모두에 설정하면 둘 다 출력된다.</td>
+<td class="success">testToStringIncludeOptionToGetterAndField()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: onlyExplicitlyIncluded를 true로 설정하면 명시적으로 포함시킨 필드만 문자열에 포함된다.</td>
+<td class="success">testToStringOnlyExplicitlyInclude()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: exclude (deprecated 예정)</td>
+<td class="success">testToStringOptionExclude()</td>
+<td class="success">0.015s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: 없는 필드를 exclude 하면 warning이 발생한다. (deprecated 예정)</td>
+<td class="success">testToStringOptionExcludeWarning()</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: includeFieldNames</td>
+<td class="success">testToStringOptionIncludeFieldNames()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: of (deprecated 예정)</td>
+<td class="success">testToStringOptionOf()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">@ToString 옵션: exclude와 of를 동시에 사용하면 경고가 발생한다. 둘 중 하나만 사용해야 한다. (deprecated 예정)</td>
+<td class="success">testToStringOptionOfAndExclude()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Member(id=1, name=홍길동, age=20)
+Member(1, 홍길동, 20, gildong@korea.com)
+Member(id=1, name=홍길동, age=20, email=gildong@korea.com)
+Member(id=1, name=홍길동, age=20, email=gildong@korea.com)
+Member(getEmail=gildong@korea.com)
+Member(age=20, email=gildong@korea.com, name=홍길동, id=1)
+Member(id=1, name=홍길동)
+Member(email=gildong@korea.com, getEmail=gildong@korea.com)
+Member(id=1, name=홍길동, age=20, email=gildong@korea.com)
+Member(id=1, name=홍길동, age=20, email=gildong@korea.com)
+Member(email=gildong@korea.com)
+Member(id=1, name=홍길동)
+getEmail() is called
+Member(id=1, name=홍길동, age=20, email=gildong@korea.com, getEmail=gildong@korea.com)
+getEmail() is called
+Member(id=1, name=홍길동, age=20, email=gildong@korea.com, getEmail=gildong@korea.com)
+Member(name=홍길동, age=20)
+Member(id=1, name=홍길동, age=20, 이메일=gildong@korea.com)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.13</a> at 2025. 5. 22. 오후 5:27:30</p>
+</div>
+</div>
+</body>
+</html>

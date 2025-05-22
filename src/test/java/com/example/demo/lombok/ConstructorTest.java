@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,16 +16,12 @@ public class ConstructorTest {
     @DisplayName("클래스는 디폴트로 기본 생성자를 가진다.")
     public void noArgConstructorTest() {
 
+        @ToString
         class Member {
             private long id;
             private String name;
             private int age;
             private String email;
-
-            @Override
-            public String toString() {
-                return "Member { id: " + id + ", name: " + name + ", age: " + age + ", email: " + email + " }";
-            }
         }
 
         Member member = new Member();
@@ -35,6 +32,7 @@ public class ConstructorTest {
     @DisplayName("생성자를 정의할 경우 디폴트 기본 생성자는 사라진다.")
     public void someArgsConstructorTest() {
 
+        @ToString
         class Member {
             private long id;
             private String name;
@@ -44,11 +42,6 @@ public class ConstructorTest {
             public Member(long id, String name) {
                 this.id = id;
                 this.name = name;
-            }
-
-            @Override
-            public String toString() {
-                return "Member { id: " + id + ", name: " + name + ", age: " + age + ", email: " + email + " }";
             }
         }
 
@@ -62,16 +55,12 @@ public class ConstructorTest {
 
         @NoArgsConstructor
         @AllArgsConstructor
+        @ToString
         class Member {
             private long id;
             private String name;
             private int age;
             private String email;
-
-            @Override
-            public String toString() {
-                return "Member { id: " + id + ", name: " + name + ", age: " + age + ", email: " + email + " }";
-            }
         }
 
         Member member = new Member();
@@ -81,4 +70,24 @@ public class ConstructorTest {
         System.out.println(member2);
     }
 
+    @Test
+    @DisplayName("static 필드는 클래스에 속하므로 객체 생성자의 인자에 포함되지 않는다.")
+    public void staticFiledIsNotIncludedInConstructorTest() {
+
+        @ToString
+        @AllArgsConstructor
+        class Member {
+            private long id;
+            private String name;
+            private int age;
+            private String email;
+
+            @ToString.Include
+            private static String type = "user";
+        }
+
+        Member member = new Member(1L, "홍길동", 20, "gildong@korea.com");
+        assertEquals("user", Member.type);
+        System.out.println(member);  // Member(id=1, name=홍길동, age=20, email=gildong@korea.com, type=user)
+    }
 }
