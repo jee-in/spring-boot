@@ -1,0 +1,76 @@
+ObjectMapper는 POJO로부터 JSON을 쓰거나 JSON을 읽어서 POJO를 만드는 기능과
+변환을 수행하는 데 필요한 관련 기능을 제공합니다. +
+다양한 스타일의 JSON 콘텐츠와 작업이 가능하고 다형성이나 Object identity 와 같은 객체 개념을 지원합니다. +
+ObjectMapper는 또한 ObjectReader와 ObjectWriter의 팩토리 역할을 하기도 합니다. +
+Mapper (그리고 그것이 생성하는 ObjectReader, ObjectWriter)는 실제 JSON을 읽고 쓰는 것을 구현하기 위하여
+JsonParser와 JsonGenerator의 인스턴스를 사용할 것입니다.
+대부분의 읽기와 쓰기 메서드가 이 클래스를 통해 공개되기는
+하지만 몇몇 기능은 오직 ObjectReader나 ObjectWriter를 통해서만 공개됩니다.
+특히, 길이가 긴 연속된 값을 읽고 쓰는 것은 ObjectReader의 readValues(InputStream)와
+ObjectWriter의 writeValues(OutputStream)을 통해서만 가능합니다.
+
+가장 간단한 사용 형태는 다음과 같습니다.
+[source, java]
+----
+final ObjectMapper mapper = new ObjectMapper(); // can use static singleton, inject: just make sure to reuse!
+MyValue value = new MyValue();
+// ... and configure
+File newState = new File("my-stuff.json");
+mapper.writeValue(newState, value); // writes JSON serialization of MyValue instance
+// or, read
+MyValue older = mapper.readValue(new File("my-older-stuff.json"), MyValue.class);
+
+  // Or if you prefer JSON Tree representation:
+  JsonNode root = mapper.readTree(newState);
+  // and find values by, for example, using a "com.fasterxml.jackson.core.JsonPointer" expression:
+  int age = root.at("/personal/age").getValueAsInt();
+----
+
+주요 변환 API는 ObjectCodec에 정의되어 있고
+이 클래스의 구체적인 구현 사항은 streaming parser와 generator 클래스에게 공개되어 있지 않습니다.
+ObjectCodec을 통한 사용은 주로 ObjectMapper 의존이 (Streaming API로부터) 가능하지 않거나
+바람직하지 않을 때 (Streaming API만 사용하고 싶을 때)만 사용됩니다.
+
+----
+* Streaming API: JsonParser, JsonGenerator
+----
+
+모든 인스턴스의 구성이 모든 read와 write 호출 전에 이루어지기만 한다면
+Mapper 인스턴스들은 완전히 thread-safe합니다.
+만약 mapper 인스턴스가 처음 사용된 후에 설정이 변경된다면, 설정의 변경은 영향을 끼치지 못하고 설정 호출 자체가 실패할 것입니다.
+다른 설정이 필요하다면 두 가지 방법이 가능합니다.
+
+* 읽기를 위해서는 ObjectReader를, 쓰기를 위해서는 ObjectWriter를 생성하여 이용하세요.
+
+두 가지 타입은 모두 불변이며 당신은 ObjectMapper의 팩토리 메서드나 reader/writer를 이용하여 다른 설정의
+새로운 인스턴스를 자유롭게 생성할 수 있습니다.
+새로운 ObjectReader나 ObjectWriter를 생성하는 일은 가벼운 연산이기 때문에
+JSON의 선택적인 들여쓰기와 같은 설정을 구성하기 위해 필요한 경우에는
+호출 시마다 새로운 인스턴스를 생성하는 것이 일반적으로 적절합니다.
+
+* 만약 ObjectReader나 ObjectWriter를 통해 특정한 종류의 설정이 가능하지 않다면
+당신은 여러 개의 ObjectMapper를 이용해야 할 수 있습니다.
+(for example: you cannot change mix-in annotations on-the-fly; or, set of custom (de)serializers).
+
+이러한 사용을 돕기 위해 당신은 mapper의 복제본을 생성하고 복제된 인스턴스가 사용되기 전에 설정이 가능한 copy()를 사용하고 싶을 수 있습니다.
+copy 연산은 ObjectMapper 인스턴스를 생성하는 것만큼이나 비싼 연산이기 때문에
+copy를 여러 개의 연산을 위해 사용할 예정이라면 당신은 가능하다면 mapper를 pooling하고 재사용하는 것이 좋습니다.
+
+**캐싱 주의사항**
+
+루트 레벨의 역직렬화는 항상 캐싱이 됩니다.
+루트 레벨의 역직렬화는 제네릭을 인식하는 완전한 타입 정보를 사용하여 접근됩니다. +
+이것은 참조된 타입에 대한 캐싱과 다릅니다.
+참조된 타입의 캐싱은 제한적이며 모든 역직렬화 타입 중 일부에 대해서만 수행됩니다.
+
+이러한 차이의 주요한 이유는 루트 레벨에서는 들어오는 참조가 없어서
+(다른 역직렬화를 만들 만한 새로운 참조하는 속성, 참조 정보나 애너테이션이 없음)
+루트 레벨에서 성능 영향이 가장 크기 때문입니다.
+(관련된 역직렬화의 전체 그래프를 캐시하기 때문입니다.)
+
+**보안 주의사항**
+
+(enableDefaultTyping()을 이용하여) "default typing" 기능을 이용하는 것은 신뢰할 수 없는 콘텐츠 (신뢰할 수 있는 외부 파티에 의해 생성된 콘텐츠)와 함께 사용될 경우
+잠재적인 보안 위험이 있습니다.
+그런 경우, (setDefaultTyping을 이용하여) 인스턴스로 만들 수 있는 타입을 제한하기 위하여 당신은 커스텀한 TypeResolverBuilder 구현체를 생성할 수 있습니다.
+

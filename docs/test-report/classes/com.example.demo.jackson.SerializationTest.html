@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - SerializationTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>SerializationTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.demo.jackson.html">com.example.demo.jackson</a> &gt; SerializationTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">10</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.119s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">클래스 멤버변수의 타입이 참조 타입이어도 객체 List의 직렬화는 성공한다.</td>
+<td class="success">testListOfReferencingObjectSerialization()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">객체 List의 직렬화는 성공한다.</td>
+<td class="success">testListSerialization()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">중첩 객체에 getter가 있으면 중첩 객체의 직렬화에 성공한다.</td>
+<td class="success">testNestedClass()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">클래스 일부 필드에 대해서만 getter가 있으면 해당 필드만 직렬화된다.</td>
+<td class="success">testPartialGetterSuccess()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">클래스 내에서 참조하고 있는 클래스에 getter가 있으면 직렬화에 성공한다.</td>
+<td class="success">testReferencingClassWithGetter()</td>
+<td class="success">0.104s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">클래스 내에서 참조하고 있는 클래스에 getter가 없으면 직렬화에 실패한다.</td>
+<td class="success">testReferencingClassWithoutGetter()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">클래스에 getter가 있으면 직렬화에 성공한다.</td>
+<td class="success">testSuccess()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">시간 관련 클래스는 직렬화에 실패한다. (jackson-datatype-jsr310 필요)</td>
+<td class="success">testTimeRelatedClass()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">클래스 멤버 변수가 모두 public이면 getter가 없어도 직렬화에 성공한다.</td>
+<td class="success">testWithPublicFields()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">전체 생성자만 있으면 직렬화에 실패한다.</td>
+<td class="success">testWithoutGetter()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>{&quot;id&quot;:1,&quot;name&quot;:&quot;홍길동&quot;,&quot;age&quot;:20,&quot;email&quot;:&quot;gildong@naver.com&quot;,&quot;privacy&quot;:{&quot;password&quot;:&quot;abcd1234&quot;,&quot;address&quot;:&quot;서울시&quot;}}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;홍길동&quot;,&quot;age&quot;:20,&quot;email&quot;:&quot;gildong@naver.com&quot;}
+class com.fasterxml.jackson.databind.exc.InvalidDefinitionException
+No serializer found for class com.example.demo.data.Privacy and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.demo.data.ReferencingMember[&quot;privacy&quot;])
+{&quot;email&quot;:&quot;gildong@naver.com&quot;}
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;홍길동&quot;,&quot;age&quot;:20,&quot;email&quot;:&quot;gildong@naver.com&quot;},{&quot;id&quot;:1,&quot;name&quot;:&quot;홍길동&quot;,&quot;age&quot;:20,&quot;email&quot;:&quot;gildong@naver.com&quot;}]
+class com.fasterxml.jackson.databind.exc.InvalidDefinitionException
+Java 8 date/time type `java.time.LocalDateTime` not supported by default: add Module &quot;com.fasterxml.jackson.datatype:jackson-datatype-jsr310&quot; to enable handling
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;홍길동&quot;,&quot;age&quot;:20,&quot;email&quot;:&quot;gildong@naver.com&quot;,&quot;privacy&quot;:{&quot;password&quot;:&quot;abcd1234&quot;,&quot;address&quot;:&quot;서울시&quot;}},{&quot;id&quot;:1,&quot;name&quot;:&quot;홍길동&quot;,&quot;age&quot;:20,&quot;email&quot;:&quot;gildong@naver.com&quot;,&quot;privacy&quot;:{&quot;password&quot;:&quot;abcd1234&quot;,&quot;address&quot;:&quot;서울시&quot;}}]
+class com.fasterxml.jackson.databind.exc.InvalidDefinitionException
+No serializer found for class com.example.demo.data.MemberAllArgs and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;홍길동&quot;,&quot;age&quot;:20,&quot;email&quot;:&quot;gildong@naver.com&quot;,&quot;subscribingChannels&quot;:[{&quot;title&quot;:&quot;짱구티비&quot;,&quot;creator&quot;:&quot;짱구&quot;}]},{&quot;id&quot;:1,&quot;name&quot;:&quot;홍길동&quot;,&quot;age&quot;:20,&quot;email&quot;:&quot;gildong@naver.com&quot;,&quot;subscribingChannels&quot;:[{&quot;title&quot;:&quot;짱구티비&quot;,&quot;creator&quot;:&quot;짱구&quot;}]}]
+{&quot;id&quot;:1,&quot;name&quot;:&quot;홍길동&quot;,&quot;age&quot;:20,&quot;email&quot;:&quot;gildong@naver.com&quot;}
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.13</a> at 2025. 5. 22. 오후 10:58:57</p>
+</div>
+</div>
+</body>
+</html>
