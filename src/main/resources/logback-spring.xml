@@ -48,9 +48,9 @@
 
     <root level="TRACE">
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
-        <appender-ref ref="JSON"/>
-        <appender-ref ref="LOGSTASH"/>
+<!--        <appender-ref ref="FILE"/>-->
+<!--        <appender-ref ref="JSON"/>-->
+<!--        <appender-ref ref="LOGSTASH"/>-->
     </root>
 
 </configuration>
