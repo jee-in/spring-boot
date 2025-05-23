@@ -41,8 +41,16 @@ tasks.register<Copy>("copyTestReport") {
     into("docs/test-report")
 }
 
+tasks.named<org.asciidoctor.gradle.jvm.AsciidoctorTask>("asciidoctor") {
+    attributes(
+        mapOf(
+            "source-highlighter" to "highlight",
+        )
+    )
+}
+
 tasks.register<Copy>("copyAsciiDoc") {
     dependsOn(tasks.named("asciidoctor"))
-    from(layout.buildDirectory.dir("asciidoc/html5"))
-    into("docs")
+    from(layout.buildDirectory.dir("docs/asciidoc"))
+    into("docs/post")
 }

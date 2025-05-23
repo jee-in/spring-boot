@@ -1,3 +1,5 @@
+=== [API] ObjectMapper
+
 ObjectMapper는 POJO로부터 JSON을 쓰거나 JSON을 읽어서 POJO를 만드는 기능과
 변환을 수행하는 데 필요한 관련 기능을 제공합니다. +
 다양한 스타일의 JSON 콘텐츠와 작업이 가능하고 다형성이나 Object identity 와 같은 객체 개념을 지원합니다. +
