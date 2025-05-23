@@ -1,15 +1,15 @@
 package com.example.demo.data;
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
+@AllArgsConstructor
 @ToString
-public class MemberSetter {
+@Setter
+public class MemberAllArgsSetter {
     private long id;
     private String name;
     private int age;
     private String email;
 }
-
