@@ -46,7 +46,7 @@
         name="org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger"
         level="WARN"/>
 
-    <root level="TRACE">
+    <root level="INFO">
         <appender-ref ref="CONSOLE"/>
 <!--        <appender-ref ref="FILE"/>-->
 <!--        <appender-ref ref="JSON"/>-->
