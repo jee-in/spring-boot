@@ -1,4 +1,4 @@
-package com.example.demo.springboot;
+package com.example.demo.springboot.property;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MutablePropertySources;
-import org.springframework.core.env.PropertySource;
-import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 public class PropertyTest {
