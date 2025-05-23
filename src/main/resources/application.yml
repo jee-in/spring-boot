@@ -5,6 +5,9 @@ spring:
     ansi:
       enabled: always
 
+test:
+  property: "property of application.yml"
+
 # default custom logging configuration path
 #logging:
 #  config: "classpath:logback-spring.xml"
