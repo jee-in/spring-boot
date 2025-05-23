@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - ConstructorTest</title>
+<title>Test results - PropertyTest</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>ConstructorTest</h1>
+<h1>PropertyTest</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/com.example.demo.lombok.html">com.example.demo.lombok</a> &gt; ConstructorTest</div>
+<a href="../packages/com.example.demo.springboot.property.html">com.example.demo.springboot.property</a> &gt; PropertyTest</div>
 <div id="summary">
 <table>
 <tr>
@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">4</div>
+<div class="counter">1</div>
 <p>tests</p>
 </div>
 </td>
@@ -73,33 +73,13 @@
 <thead>
 <tr>
 <th>Test</th>
-<th>Method name</th>
 <th>Duration</th>
 <th>Result</th>
 </tr>
 </thead>
 <tr>
-<td class="success">기본 생성자와 전체 생성자가 모두 필요하다면 @NoArgsConstructor와 @AllArgsConstructor가 모두 필요하다.</td>
-<td class="success">EntireConstructorTest()</td>
-<td class="success">0s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">클래스는 디폴트로 기본 생성자를 가진다.</td>
-<td class="success">noArgConstructorTest()</td>
-<td class="success">0.001s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">생성자를 정의할 경우 디폴트 기본 생성자는 사라진다.</td>
-<td class="success">someArgsConstructorTest()</td>
-<td class="success">0.001s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">static 필드는 클래스에 속하므로 객체 생성자의 인자에 포함되지 않는다.</td>
-<td class="success">staticFiledIsNotIncludedInConstructorTest()</td>
-<td class="success">0.003s</td>
+<td class="success">printAllPropertySources()</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -107,11 +87,18 @@
 <div class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>Member(id=0, name=null, age=0, email=null)
-Member(id=1, name=홍길동, age=20, email=gildong@korea.com, type=user)
-Member(id=0, name=null, age=0, email=null)
-Member(id=1, name=홍길동, age=20, email=gildong@korea.com)
-Member(id=1, name=John, age=0, email=null)
+<pre>?[35m958?[0;39m [?[32mTest worker?[0;39m] ?[34mINFO ?[0;39m ?[36morg.springframework.test.context.support.AnnotationConfigContextLoaderUtils?[0;39m - ?[1;30mCould not detect default configuration classes for test class [com.example.demo.springboot.property.PropertyTest]: PropertyTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+?[0;39m?[35m959?[0;39m [?[32mTest worker?[0;39m] ?[34mINFO ?[0;39m ?[36morg.springframework.boot.test.context.SpringBootTestContextBootstrapper?[0;39m - ?[1;30mFound @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.springboot.property.PropertyTest
+?[0;39mconfigurationProperties
+test
+Inlined Test Properties
+systemProperties
+systemEnvironment
+random
+Config resource 'class path resource [application.properties]' via location 'optional:classpath:/'
+Config resource 'class path resource [application.yml]' via location 'optional:classpath:/'
+applicationInfo
+Override testProperty value: &quot;property of application.properties&quot;
 </pre>
 </span>
 </div>
