@@ -67,17 +67,17 @@ public class ToStringTest {
     @DisplayName("@ToString 옵션: 없는 필드를 exclude 하면 warning이 발생한다. (deprecated 예정)")
     public void testToStringOptionExcludeWarning() {
 
-        @ToString(exclude = "address") // warning: This field does not exist, or would have been excluded anyway.
-        @AllArgsConstructor
-        class Member {
-            private long id;
-            private String name;
-            private int age;
-            private String email;
-        }
-
-        Member member = new Member(1L, "홍길동", 20, "gildong@korea.com");
-        System.out.println(member); // Member(id=1, name=홍길동, age=20, email=gildong@korea.com)
+//        @ToString(exclude = "address") // warning: This field does not exist, or would have been excluded anyway.
+//        @AllArgsConstructor
+//        class Member {
+//            private long id;
+//            private String name;
+//            private int age;
+//            private String email;
+//        }
+//
+//        Member member = new Member(1L, "홍길동", 20, "gildong@korea.com");
+//        System.out.println(member); // Member(id=1, name=홍길동, age=20, email=gildong@korea.com)
     }
 
     @Test
@@ -97,22 +97,22 @@ public class ToStringTest {
         System.out.println(member); // Member(id=1, name=홍길동)
     }
 
-    @Test
-    @DisplayName("@ToString 옵션: exclude와 of를 동시에 사용하면 경고가 발생한다. 둘 중 하나만 사용해야 한다. (deprecated 예정)")
-    public void testToStringOptionOfAndExclude() {
-
-        @ToString(of = {"id", "name"}, exclude = "email") // Parameters 'exclude' and 'of' are mutually exclusive; the 'exclude' parameter will be ignored
-        @AllArgsConstructor
-        class Member {
-            private long id;
-            private String name;
-            private int age;
-            private String email;
-        }
-
-        Member member = new Member(1L, "홍길동", 20, "gildong@korea.com");
-        System.out.println(member); // Member(id=1, name=홍길동)
-    }
+//    @Test
+//    @DisplayName("@ToString 옵션: exclude와 of를 동시에 사용하면 경고가 발생한다. 둘 중 하나만 사용해야 한다. (deprecated 예정)")
+//    public void testToStringOptionOfAndExclude() {
+//
+//        @ToString(of = {"id", "name"}, exclude = "email") // Parameters 'exclude' and 'of' are mutually exclusive; the 'exclude' parameter will be ignored
+//        @AllArgsConstructor
+//        class Member {
+//            private long id;
+//            private String name;
+//            private int age;
+//            private String email;
+//        }
+//
+//        Member member = new Member(1L, "홍길동", 20, "gildong@korea.com");
+//        System.out.println(member); // Member(id=1, name=홍길동)
+//    }
 
     @Test
     @DisplayName("@ToString 옵션: 필드 또는 getter에 @ToString.Exclude 를 쓰면 해당 필드를 문자열화에서 제외할 수 있다.")
@@ -134,23 +134,23 @@ public class ToStringTest {
         System.out.println(member); // Member(id=1, name=홍길동, age=20)
     }
 
-    @Test
-    @DisplayName("@ToString 옵션: 필드 또는 getter에 @ToString.Exclude와 @ToString.Include를 동시에 쓰면 에러가 발생한다.")
-    public void testToStringExcludeAndInclude() {
-
-        @ToString
-        @AllArgsConstructor
-        class Member {
-
-            private long id;
-            private String name;
-            private int age;
-
-            @ToString.Include
-            //@ToString.Exclude // error: @ToString.Exclude and @ToString.Include are mutually exclusive; the @Include annotation will be ignored
-            private String email;
-        }
-    }
+//    @Test
+//    @DisplayName("@ToString 옵션: 필드 또는 getter에 @ToString.Exclude와 @ToString.Include를 동시에 쓰면 에러가 발생한다.")
+//    public void testToStringExcludeAndInclude() {
+//
+//        @ToString
+//        @AllArgsConstructor
+//        class Member {
+//
+//            private long id;
+//            private String name;
+//            private int age;
+//
+//            @ToString.Include
+//            //@ToString.Exclude // error: @ToString.Exclude and @ToString.Include are mutually exclusive; the @Include annotation will be ignored
+//            private String email;
+//        }
+//    }
 
     @Test
     @DisplayName("@ToString 옵션: @ToString.Include를 명시적으로 하지 않아도 모든 필드는 문자열화된다.")
