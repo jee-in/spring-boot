@@ -5,8 +5,8 @@
         value="%magenta(%r) [%green(%thread)] %highlight(%-5level) %cyan(%logger) - %gray(%msg%n)"/>
     <property name="FILE_LOG_PATTERN"
         value="%r [%thread] %-5level %logger - %msg%n"/>
-    <property name="LOG_PATH" value="logs/logback-setting.log"/>
-    <property name="JSON_PATH" value="logs/json.txt"/>
+    <property name="LOG_PATH" value="logs/springboot-web.log"/>
+    <property name="JSON_PATH" value="logs/springboot-web.txt"/>
     <property name="LOGSTASH_PATH" value="localhost:5200"/>
 
     <!-- 콘솔 로그 -->
@@ -46,11 +46,29 @@
         name="org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger"
         level="WARN"/>
 
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-<!--        <appender-ref ref="FILE"/>-->
-<!--        <appender-ref ref="JSON"/>-->
-<!--        <appender-ref ref="LOGSTASH"/>-->
-    </root>
+    <logger name="javax.management.remote.misc" level="WARN"/>
+    <logger name="javax.management.remote.rmi" level="WARN"/>
+    <logger name="javax.management.remote.timeout" level="WARN"/>
+    <logger name="javax.management.mbeanserver" level="WARN"/>
+    <logger name="java.io.serialization" level="WARN"/>
+    <logger name="sun.rmi.loader" level="WARN"/>
+    <logger name="sun.rmi.dgc" level="WARN"/>
+    <logger name="sun.rmi.server.call" level="WARN"/>
+    <logger name="sun.rmi.transport.tcp" level="WARN"/>
+    <logger name="sun.rmi.transport.misc" level="WARN"/>
+    <logger name="org.apache.tomcat.util.net.NioEndpoint" level="WARN"/>
+    <logger name="org.apache.coyote.http11.Http11InputBuffer" level="WARN"/>
+    <logger name="org.apache.coyote.http11.Http11Processor" level="WARN"/>
+    <logger name="org.apache.tomcat.util.net.SocketWrapperBase" level="WARN"/>
+    <logger name="org.springframework.boot.availability.ApplicationAvailabilityBean" level="WARN"/>
+
+    <springProfile name="default">
+        <logger name="ROOT" level="DEBUG">
+            <appender-ref ref="CONSOLE"/>
+<!--                    <appender-ref ref="FILE"/>-->
+<!--                    <appender-ref ref="JSON"/>-->
+            <!--        <appender-ref ref="LOGSTASH"/>-->
+        </logger>
+    </springProfile>
 
 </configuration>
