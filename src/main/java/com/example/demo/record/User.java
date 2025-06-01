@@ -1,4 +1,4 @@
-package com.example.demo.multipart;
+package com.example.demo.record;
 
 import lombok.Setter;
 import lombok.ToString;

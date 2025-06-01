@@ -1,7 +1,5 @@
-package com.example.demo.multipart.controller;
+package com.example.demo.record;
 
-import com.example.demo.multipart.User;
-import com.example.demo.multipart.dto.UserRecord;
 import java.net.URI;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
